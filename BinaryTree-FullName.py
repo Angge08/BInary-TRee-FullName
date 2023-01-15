@@ -106,16 +106,61 @@ class BinarySearchTreeNode:
 
         return self
 
-        def calculate_sum(self):
-            left_sum = self.left.calculate_sum() if self.left else 0
-            right_sum = self.right.calculate_sum() if self.right else 0
-            return self.data + left_sum + right_sum
+    def calculate_sum(self):
+        left_sum = self.left.calculate_sum() if self.left else 0
+        right_sum = self.right.calculate_sum() if self.right else 0
+        return self.data + left_sum + right_sum
 
-    def build_tree(elements):
+def build_tree(elements):
         root = BinarySearchTreeNode(elements[0])
 
         for i in range(1, len(elements)):
             root.add_child(elements[i])
 
         return root
+
+if __name__ == '__main__':
+        fullname = ["A", "N", "G", "E", "L", "I", "C", "A", "C",
+                    "D", "E", "L", "M", "E", "N", "D", "O"]
+        name_tree = build_tree(fullname)
+        print("****************************************************************************************************")
+        print("My fullname:", fullname)
+        print("****************************************************************************************************")
+        print("Min:", name_tree.find_min())
+        print("Max:", name_tree.find_max())
+        print("****************************************************************************************************")
+        print("In order traversal:", name_tree.in_order_traversal())
+        print("Pre order traversal:", name_tree.pre_order_traversal())
+        print("Post order traversal:", name_tree.post_order_traversal())
+        print("****************************************************************************************************")
+        name_tree.delete("G")
+        print("After deleting the letter G", name_tree.in_order_traversal())
+        name_tree.delete("O")
+        print("After deleting the letter O", name_tree.in_order_traversal())
+        print("****************************************************************************************************")
+        print("Is letter A is in the list of my fullname? ", name_tree.search("A"))
+        print("Is letter R is in the list of my fullname? ", name_tree.search("R"))
+        print("****************************************************************************************************")
+
+if __name__ == '__main__':
+        number = [69, 45, 67, 90, 78, 80, 23, 67, 97, 45]
+        number_tree = build_tree(number)
+        print("****************************************************************************************************")
+        print("My phone number:", number)
+        print("****************************************************************************************************")
+        print("Sum:", number_tree.calculate_sum())
+        print("Min:", number_tree.find_min())
+        print("Max:", number_tree.find_max())
+        print("****************************************************************************************************")
+        print("In order traversal:", number_tree.in_order_traversal())
+        print("Pre order traversal:", number_tree.pre_order_traversal())
+        print("Post order traversal:", number_tree.post_order_traversal())
+        print("****************************************************************************************************")
+        number_tree.delete(69)
+        print("After deleting the number 69", number_tree.in_order_traversal())
+        number_tree.delete(97)
+        print("After deleting the number 97", number_tree.in_order_traversal())
+        print("****************************************************************************************************")
+        print("Is number 67 is in the list of my phone number?", number_tree.search(67))
+        print("Is number 100 is in the list of my phone number?", number_tree.search(100))
 
